@@ -4,8 +4,8 @@ class Movie < ActiveRecord::Base
   end
   
   def self.similar(id)
-    director=Movie.find(id).director
-    return nil if director.nil? or director.blank?
+    Movie.find(id).director
+    #return nil if director.nil? or director.blank?
      self.where(director: Movie.find(id).director)
   end
 end

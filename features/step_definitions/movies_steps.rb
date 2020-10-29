@@ -11,9 +11,13 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   expect(page.body.index(e1) < page.body.index(e2))
 end
 
-Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |e1, e2|
- @movie = Movie.find_by_title(e1)
- expect(@movie.director).to eq(e2)
+#Then /^the director of "(.*)" should be "(.*)"$/ do |e1, e2|
+ #@movie = Movie.find_by_title(e1)
+ #expect(@movie.reload.director).to eq(e2)
+#end
+
+Then(/^the director of "(.*?)" should be "(.*?)"$/) do |title, director|
+  Movie.find_by_title(title).director.should eq director
 end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
