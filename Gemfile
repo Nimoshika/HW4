@@ -20,6 +20,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
 end
 group :production do
+  gem 'sqlite3', '1.3.11'
   #gem 'pg'
 end
 
